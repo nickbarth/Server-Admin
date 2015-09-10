@@ -10,4 +10,4 @@ apt-get install -y vsftpd
 sed -i "s/#\(chroot_local_user=YES\)/\1/" /etc/vsftpd.conf
 sed -i "s/#\(write_enable=YES\)/\1/" /etc/vsftpd.conf
 
-sudo service vsftpd restart
+service vsftpd restart
