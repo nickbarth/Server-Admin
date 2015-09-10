@@ -1,5 +1,11 @@
 #!/bin/bash
 
+####
+# Install and setup a LAMP server stack.
+#
+# USAGE: ./server_setup.sh
+##
+
 # Run as Root
 if [[ $EUID -ne 0 ]]; then
   echo "This script must be run as root" 1>&2
