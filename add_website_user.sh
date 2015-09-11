@@ -7,6 +7,4 @@
 ###
 
 USER=$1
-useradd --system --home /var/www/$USER --group www-data $USER
-
-mkdir /var/www/$USER
+adduser --system --ingroup www-data --home /var/www/$USER $USER
