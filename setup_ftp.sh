@@ -15,6 +15,8 @@ fi
 apt-get install -y vsftpd
 sed -i "s/#\(chroot_local_user=YES\)/\1/" /etc/vsftpd.conf
 sed -i "s/#\(write_enable=YES\)/\1/" /etc/vsftpd.conf
+sed -i "s/\(pam_service_name=\)vsftpd/\1ftp/" /etc/vsftpd.conf
 echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf
+
 
 service vsftpd restart
