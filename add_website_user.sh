@@ -7,4 +7,7 @@
 ###
 
 USER=$1
+
 adduser --system --ingroup www-data --home /var/www/$USER $USER
+
+service vsftpd restart
