@@ -16,7 +16,7 @@ DOMAIN=$1
 cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 <VirtualHost *:80>
   ServerName $DOMAIN
-  ServerAlias *.$DOMAIN
+  # ServerAlias *.$DOMAIN
   DocumentRoot /var/www/$DOMAIN
 
   CustomLog /var/log/apache/$DOMAIN_access.log combined
