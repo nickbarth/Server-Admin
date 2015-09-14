@@ -1,2 +1,5 @@
 #!/bin/bash
 
+MYSQL_HOST=""
+MYSQL_ADMIN=""
+MYSQL_PASSWORD=""
