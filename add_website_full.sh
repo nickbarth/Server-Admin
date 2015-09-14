@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####
-# Add, configure, and setup a website installation. 
+# Add a website with a user, database, and apache config. 
 #
 # USAGE: ./add_website_full.sh example.com passwd
 ##
