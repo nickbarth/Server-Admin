@@ -4,7 +4,7 @@
 # Create a database and database admin user.
 #
 # USAGE: ./create_database main.example.us-east-1.rds.amazonaws.com mysql_root _passwd example_com _expasswd
-###
+##
 
 if [[ $EUID -ne 0 ]]; then
   echo "This script must be run as root" 1>&2
