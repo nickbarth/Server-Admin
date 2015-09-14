@@ -6,15 +6,13 @@
 # USAGE: ./add_website_user.sh example_com
 ###
 
-DOMAIN=$1
-
-if [ -z "$DOMAIN" ]; then
-  echo -n "DOMAIN: "
-  read $DOMAIN
+if [[ $EUID -ne 0 ]]; then
+  echo "This script must be run as root" 1>&2
+  exit 1
 fi
 
 # Lowercase and no periods
-DOMAIN=$(echo ${DOMAIN,,} | sed 's/\./_/g')
+DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 
