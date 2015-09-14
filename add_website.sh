@@ -3,7 +3,7 @@
 ####
 # Add, configure, and setup a website installation. 
 #
-# USAGE: ./add_website.sh example.com
+# USAGE: ./add_website.sh example.com passwd
 ##
 
 if [[ $EUID -ne 0 ]]; then
