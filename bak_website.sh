@@ -12,4 +12,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+# Domain lowercased and no periods eg. example_com
+DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
+
 tar -zcvf $DOMAIN-$(date +%Y-%m-%d).backup.tar.gz
