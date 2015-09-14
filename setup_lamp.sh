@@ -1,4 +1,5 @@
 #!/bin/bash
 
 source setup_server.sh
-source setup_
+source setup_ftp.sh
+source setup_database.sh
