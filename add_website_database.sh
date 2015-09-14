@@ -3,7 +3,7 @@
 ####
 # Create a database and database admin user.
 #
-# USAGE: ./create_database example.com passwd
+# USAGE: ./add_website_database.sh example.com passwd
 ##
 
 # Run as Root
