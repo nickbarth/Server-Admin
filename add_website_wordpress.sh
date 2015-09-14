@@ -3,7 +3,7 @@
 ####
 # Add, configure, and setup a Wordpress installation. 
 #
-# USAGE: ./add_website_wordpress.sh example.com
+# USAGE: ./add_website_wordpress.sh example.com passwd
 ##
 
 if [[ $EUID -ne 0 ]]; then
