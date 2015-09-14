@@ -13,10 +13,11 @@ fi
 
 # Domain lowercased and no periods eg. example_com
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
+PASSWORD=$2
 
 # Create User
-./add_website_user.sh $DOMAIN
-./add_website_database.sh $DOMAIN
+./add_website_user.sh $DOMAIN $PASSWORD
+./add_website_database.sh $DOMAIN $PASSWORD
 ./add_website_apache_config.sh $DOMAIN
 
 # Download Files
