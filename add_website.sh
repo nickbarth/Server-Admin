@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####
-# Add, configure, and setup a Wordpress installation. 
+# Add, configure, and setup a website installation. 
 #
 # USAGE: ./add_website.sh example.com
 ##
