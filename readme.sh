@@ -12,6 +12,8 @@ echo 'Linux Admin Scripts for Ubuntu Trusty 14.04 Amd64 Server 20150325 (ami-d05
 echo >> readme.md
 
 echo '```bash' >> readme.md
+echo '# Documenation:' >> readme.md
+echo >> readme.md
 for SCRIPT in $(ls *.sh); do
   echo $SCRIPT >> readme.md
   awk '/^####$/,/^##$/' $SCRIPT >> readme.md
