@@ -3,7 +3,7 @@
 ####
 # Install and setup a server stack.
 #
-# USAGE: ./server_setup.sh
+# USAGE: ./setup_server.sh
 ##
 
 # Run as Root
