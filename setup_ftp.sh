@@ -3,7 +3,7 @@
 ####
 # Install and setup an FTP Server
 #
-# USAGE: ./ftp_setup.sh
+# USAGE: ./setup_ftp.sh
 ##
 
 # Run as Root
