@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-# MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
+# Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
 source ./database_config.sh
 
 # Domain lowercased and no periods eg. example_com
