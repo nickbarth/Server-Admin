@@ -3,7 +3,7 @@
 ####
 # Install and setup a MySQL Server.
 #
-# USAGE: ./setup_database.sh "%MySQLRootPasswd%"
+# USAGE: ./setup_database.sh
 ##
 
 # Run as Root
@@ -12,7 +12,8 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-MYSQL_ROOT_PASSWD=$1
+# Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
+source ./database_config.sh
 
 DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
-mysql --host="localhost" --user="root" --execute="SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MYSQL_ROOT_PASSWD');"
+mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --execute="SET PASSWORD FOR '$MYSQL_ADMIN'@'$MYSQL_HOST' = PASSWORD('$MYSQL_PASSWORD');"
