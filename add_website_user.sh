@@ -12,7 +12,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-# Lowercase and no periods
+# Domain lowercased and no periods eg. example_com
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
