@@ -1,5 +1,11 @@
 #!/bin/bash
 
+####
+# Install and setup a MySQL Server.
+#
+# USAGE: ./setup_database.sh
+##
+
 MYSQL_ROOT_PASSWD=$1
 
 # Run as Root
