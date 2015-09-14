@@ -3,7 +3,7 @@
 ####
 # Generates a readme with explaination of scripts.
 #
-# USAGE: ./readme.sh.sh
+# USAGE: ./readme.sh
 ##
 
 echo "# Server-Admin" > readme.md
