@@ -8,6 +8,6 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-apt-get install -y vsftpd
+DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
 
 mysql --host="localhost" --user="root" --execute="SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MYSQL_ROOT_PASSWD');"
