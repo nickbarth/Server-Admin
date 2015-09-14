@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####
-# Install and configure an FTP Server
+# Install and setup an FTP Server
 #
 # USAGE: ./ftp_setup.sh
 ##
