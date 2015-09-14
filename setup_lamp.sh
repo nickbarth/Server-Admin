@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####
-# Run full server setup.
+# Run full LAMP server setup with FTP.
 #
 # USAGE: ./setup_lamp.sh
 ##
