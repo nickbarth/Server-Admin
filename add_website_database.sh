@@ -12,6 +12,9 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+# Domain lowercased and no periods eg. example_com
+DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
+
 MYSQL_HOST=$1
 MYSQL_ADMIN=$2
 MYSQL_PASSWORD=$3
