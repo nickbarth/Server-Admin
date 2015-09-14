@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####
-# Install and setup a MySQL Server.
+# Run full server setup.
 #
 # USAGE: ./setup_lamp.sh
 ##
