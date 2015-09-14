@@ -12,7 +12,8 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-DOMAIN=$1
+# Domain lowercased and no periods eg. example_com
+DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
 cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 <VirtualHost *:80>
