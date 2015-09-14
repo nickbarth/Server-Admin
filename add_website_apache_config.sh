@@ -3,7 +3,7 @@
 ####
 # Add a virtual host into Apache for a given domain.
 #
-# USAGE: ./add_website.sh example.com
+# USAGE: ./add_website_apache_config.sh example.com
 ##
 
 if [[ $EUID -ne 0 ]]; then
