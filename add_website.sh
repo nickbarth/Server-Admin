@@ -19,6 +19,3 @@ PASSWORD=$2
 ./add_website_user.sh $DOMAIN $PASSWORD
 ./add_website_database.sh $DOMAIN $PASSWORD
 ./add_website_apache_config.sh $DOMAIN
-
-# Download Files
-curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory /var/www/$DOMAIN --strip-components=1 wordpress
