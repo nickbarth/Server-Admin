@@ -23,7 +23,7 @@ add_website.sh
 ####
 # Add, configure, and setup a website installation. 
 #
-# USAGE: ./add_website.sh example.com
+# USAGE: ./add_website.sh example.com passwd
 ##
 
 add_website_user.sh
@@ -37,7 +37,7 @@ add_website_wordpress.sh
 ####
 # Add, configure, and setup a Wordpress installation. 
 #
-# USAGE: ./add_website_wordpress.sh example.com
+# USAGE: ./add_website_wordpress.sh example.com passwd
 ##
 
 bak_database.sh
@@ -45,6 +45,20 @@ bak_database.sh
 # Backup a database to an SQL file.
 #
 # USAGE: ./bak_database.sh example.com
+##
+
+bak_domain.sh
+####
+# Backup a website and its database.
+#
+# USAGE: ./bak_domain.sh example.com
+##
+
+bak_website.sh
+####
+# Backup a website to a tarball.
+#
+# USAGE: ./bak_website.sh example.com
 ##
 
 config_database.sh
@@ -68,12 +82,12 @@ setup_database.sh
 ####
 # Install and setup a MySQL Server.
 #
-# USAGE: ./setup_database.sh "%MySQLRootPasswd%"
+# USAGE: ./setup_database.sh
 ##
 
 setup_ftp.sh
 ####
-# Install and configure an FTP Server
+# Install and setup an FTP Server
 #
 # USAGE: ./ftp_setup.sh
 ##
