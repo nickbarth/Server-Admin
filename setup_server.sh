@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####
-# Install and setup a LAMP server stack.
+# Install and setup a server stack.
 #
 # USAGE: ./server_setup.sh
 ##
