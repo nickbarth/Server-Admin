@@ -15,5 +15,5 @@ fi
 # Domain lowercased and no periods eg. example_com
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
-./bak_website.sh
-./bak_database.sh
+./bak_website.sh $DOMAIN
+./bak_database.sh $DOMAIN
