@@ -16,14 +16,14 @@ add_website_database.sh
 ####
 # Create a database and database admin user.
 #
-# USAGE: ./create_database example.com passwd
+# USAGE: ./add_website_database.sh example.com passwd
 ##
 
-add_website.sh
+add_website_full.sh
 ####
-# Add, configure, and setup a website installation. 
+# Add a website with a user, database, and apache config. 
 #
-# USAGE: ./add_website.sh example.com passwd
+# USAGE: ./add_website_full.sh example.com passwd
 ##
 
 add_website_user.sh
@@ -89,7 +89,7 @@ setup_ftp.sh
 ####
 # Install and setup an FTP Server
 #
-# USAGE: ./ftp_setup.sh
+# USAGE: ./setup_ftp.sh
 ##
 
 setup_lamp.sh
@@ -103,7 +103,7 @@ setup_server.sh
 ####
 # Install and setup a server stack.
 #
-# USAGE: ./server_setup.sh
+# USAGE: ./setup_server.sh
 ##
 
 ```
