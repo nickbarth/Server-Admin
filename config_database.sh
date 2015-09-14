@@ -9,6 +9,6 @@
 # eg. main.example.us-east-1.rds.amazonaws.com, root, passwd
 ##
 
-MYSQL_HOST=""
-MYSQL_ADMIN=""
+MYSQL_HOST="localhost"
+MYSQL_ADMIN="root"
 MYSQL_PASSWORD=""
