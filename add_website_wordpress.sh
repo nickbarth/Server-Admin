@@ -16,8 +16,8 @@ DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
 # Create User
 ./add_website_user.sh $DOMAIN
-./add_website_apache_config.sh $DOMAIN
 ./add_website_database.sh $DOMAIN
+./add_website_apache_config.sh $DOMAIN
 
 # Download Files
 curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory /var/www/$DOMAIN --strip-components=1 wordpress
