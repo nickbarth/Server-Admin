@@ -11,6 +11,11 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-source ./add_website_user.sh
+# Lowercase and no periods
+DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
-curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory $DOMAIN --strip-components=1 wordpress
+# Create User
+./add_website_user.sh $DOMAIN
+
+# Download Files
+curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory /var/www/$DOMAIN --strip-components=1 wordpress
