@@ -19,13 +19,21 @@ sed -i "s/\(pam_service_name=\)vsftpd/\1ftp/" /etc/vsftpd.conf
 echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf
 
 #
-# Passive Mode FTP Servers Require This
+# Require by Passive Mode FTP clients
 #
 # pasv_enable=YES
 # pasv_max_port=12100
 # pasv_min_port=12000
 # port_enable=YES
 # pasv_address=123.123.123.0
+#
+
+#
+# Default for 755 file uploads
+#
+# file_open_mode=0777
+# local_umask=022
+#
 #
 
 service vsftpd restart
