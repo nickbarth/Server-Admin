@@ -72,19 +72,16 @@ a2ensite $DOMAIN
 service apache2 reload
 
 mkdir -p ~/domains/ && tee ~/domains/$DOMAIN.conf <<- EOF
-DOMAIN: $IDOMAIN
-HTTP:
-  - PATH: /var/www/$DOMAIN
-  - CONFIG: /etc/apache2/sites-available/$DOMAIN.conf
-LOGS:
-  - ACCESS: /var/log/apache2/${DOMAIN}_access.log
-  - ERROR: /var/log/apache2/${DOMAIN}_error.log
-DATABASE:
-  - DB: $DOMAIN
-  - HOST: $MYSQL_HOST
-  - USER: $DOMAIN
-  - PASS: $PASSWORD
-FTP:
-  - USER: $DOMAIN
-  - PASS: $PASSWORD
+declare -A DOMAIN=()
+DOMAIN['url']=$IDOMAIN
+DOMAIN['http_path']="/var/www/$DOMAIN"
+DOMAIN['http_config']="/etc/apache2/sites-available/$DOMAIN.conf"
+DOMAIN['logs_access']="/var/log/apache2/${DOMAIN}_access.log"
+DOMAIN['logs_error']="/var/log/apache2/${DOMAIN}_error.log"
+DOMAIN['database_db']="$DOMAIN"
+DOMAIN['database_host']="$MYSQL_HOST"
+DOMAIN['database_user']="$DOMAIN"
+DOMAIN['database_password']="$PASSWORD"
+DOMAIN['ftp_user']="$DOMAIN"
+DOMAIN['ftp_password']="$PASSWORD"
 EOF
