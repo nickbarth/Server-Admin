@@ -74,6 +74,7 @@ service apache2 reload
 mkdir -p ~/domains/ && tee ~/domains/$DOMAIN.sh <<- EOF
 declare -A DOMAIN=()
 DOMAIN['url']=$IDOMAIN
+DOMAIN['name']=$DOMAIN
 DOMAIN['http_path']="/var/www/$DOMAIN"
 DOMAIN['http_config']="/etc/apache2/sites-available/$DOMAIN.conf"
 DOMAIN['logs_access']="/var/log/apache2/${DOMAIN}_access.log"
