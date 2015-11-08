@@ -24,10 +24,15 @@ else
   PASSWORD=$2
 fi
 
+if [ -z "$DOMAIN" ] || [ -z "$PASSWORD" ];
+  echo "Domain and password required.\n # USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/add_website_from_curl.sh) example.com passwd" 1>&2
+  exit 3
+fi
+
 # Check length of domain to protect from MySQL username length error.
 if [ ${#DOMAIN} -ge 15 ]; then
-  echo "Domain user is longer than allowed for MySQL."
-  exit
+  echo "Domain user is longer than allowed for MySQL." 1>&2
+  exit 4
 fi
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
