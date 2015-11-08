@@ -11,12 +11,20 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+# Configure Script
+if [ ! -f ~/config.sh ]; then
+  echo "File not found!"
+  exit 2
+else
+  # Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
+  source ~/config.sh
+fi
+
 # Domain lowercased and no periods eg. example_com
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 PASSWORD=$2
 
-# Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
-source ./database_config.sh
+
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
