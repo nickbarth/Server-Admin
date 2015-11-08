@@ -68,10 +68,15 @@ cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 </VirtualHost>
 EOF
 
-tee >> ~/websites.txt <<- EOF
+mkdir ~/domains/ && tee >> ~/$DOMAIN.conf <<- EOF
 =======
 DOMAIN: $IDOMAIN
-PATH: /var/www/$DOMAIN
+HTTP:
+  - PATH: /var/www/$DOMAIN
+  - CONFIG: /etc/apache2/sites-available/$DOMAIN.conf
+LOGS:
+  - ACCESS: /var/log/apache2/$DOMAIN_access.log
+  - ERROR: /var/log/apache2/$DOMAIN_error.log
 DATABASE:
   - DB: $DOMAIN
   - HOST: $MYSQL_HOST
