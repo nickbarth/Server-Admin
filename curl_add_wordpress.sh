@@ -22,10 +22,10 @@ else
 fi
 
 # Download Files
+mkdir -p /var/www/$DOMAIN && cd /var/www/$DOMAIN
 curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory /var/www/$DOMAIN --strip-components=1 wordpress
 
 # Configure Wordpress
-cd /var/www/$DOMAIN
 mv wp-config-sample.php wp-config.php
 
 # Database
