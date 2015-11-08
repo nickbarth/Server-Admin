@@ -45,7 +45,7 @@ mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="GRANT ALL PRIVILEGES ON $DOMAIN.* TO '$DOMAIN'@'%';"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="FLUSH PRIVILEGES;"
 
-cat << EOF > /etc/apache2/sites-available/$DOMAIN.conf
+cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 <VirtualHost *:80>
   ServerName $IDOMAIN
   # ServerAlias *.$IDOMAIN
