@@ -41,7 +41,7 @@ mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --
 # Domain lowercased and no periods eg. example_com
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
-cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
+cat << EOF >> /etc/apache2/sites-available/$DOMAIN.conf
 <VirtualHost *:80>
   ServerName $DOMAIN
   # ServerAlias *.$DOMAIN
