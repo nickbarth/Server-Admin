@@ -3,7 +3,7 @@
 ####
 # Add a website with a user, database, and apache config. 
 #
-# USAGE: ./add_full_website.sh example.com passwd
+# USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/add_website_from_curl.sh) example.com passwd
 ##
 
 if [[ $EUID -ne 0 ]]; then
