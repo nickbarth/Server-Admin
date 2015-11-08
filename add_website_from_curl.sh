@@ -68,7 +68,7 @@ cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 </VirtualHost>
 EOF
 
-mkdir ~/domains/ && tee >> ~/$DOMAIN.conf <<- EOF
+mkdir ~/domains/ && tee ~/domains/$DOMAIN.conf <<- EOF
 =======
 DOMAIN: $IDOMAIN
 HTTP:
