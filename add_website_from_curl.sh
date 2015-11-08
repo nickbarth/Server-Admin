@@ -68,9 +68,6 @@ cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 </VirtualHost>
 EOF
 
-a2ensite $DOMAIN
-service apache2 reload
-
 tee >> ~/websites.txt <<- EOF
 =======
 DOMAIN: $IDOMAIN
@@ -84,3 +81,6 @@ FTP:
   - USER: $DOMAIN
   - PASS: $PASSWORD
 EOF
+
+a2ensite $DOMAIN
+service apache2 reload
