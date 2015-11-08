@@ -71,7 +71,7 @@ EOF
 a2ensite $DOMAIN
 service apache2 reload
 
-cat << EOF >> ~/websites.txt
+tee << EOF >> ~/websites.txt
 =======
 DOMAIN: $RAWDOMAIN
 PATH: /var/www/$DOMAIN
