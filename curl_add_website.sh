@@ -71,7 +71,7 @@ EOF
 a2ensite $DOMAIN
 service apache2 reload
 
-mkdir -p ~/domains/ && tee ~/domains/$DOMAIN.conf <<- EOF
+mkdir -p ~/domains/ && tee ~/domains/$DOMAIN.sh <<- EOF
 declare -A DOMAIN=()
 DOMAIN['url']=$IDOMAIN
 DOMAIN['http_path']="/var/www/$DOMAIN"
