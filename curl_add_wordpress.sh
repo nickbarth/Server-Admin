@@ -41,3 +41,17 @@ curl -s https://api.wordpress.org/secret-key/1.1/salt/ | while read LINE; do
   sed -i "${LINENUMBER}d" ./wp-config.php
   sed -i "${LINENUMBER}i${LINE}" ./wp-config.php
 done
+
+# FTP
+cat >> ./wp-config.php <<- EOF
+
+/** FTP Settings */
+define('FS_METHOD', 'ftpext');
+define('FTP_BASE', '${DOMAIN['http_path']}');
+define('FTP_USER', '${DOMAIN['ftp_user']}');
+define('FTP_PASS', '${DOMAIN['ftp_password']}');
+define('FTP_HOST', '${DOMAIN['url']}');
+define('FTP_SSL', false);
+EOF
+
+echo "Wordpress installed to ${DOMAIN['http_path']}."
