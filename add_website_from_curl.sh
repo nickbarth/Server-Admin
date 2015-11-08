@@ -51,8 +51,8 @@ cat << EOF >> /etc/apache2/sites-available/$DOMAIN.conf
   # ServerAlias *.$RAWDOMAIN
   DocumentRoot /var/www/$DOMAIN
 
-  CustomLog /var/log/apache/$DOMAIN_access.log combined
-  ErrorLog /var/log/apache/$DOMAIN_error.log
+  CustomLog /var/log/apache2/$DOMAIN_access.log combined
+  ErrorLog /var/log/apache2/$DOMAIN_error.log
 
   <Directory />
     Options FollowSymLinks
