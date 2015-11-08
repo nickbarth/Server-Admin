@@ -71,7 +71,7 @@ EOF
 a2ensite $DOMAIN
 service apache2 reload
 
-tee << EOF >> ~/websites.txt
+tee >> ~/websites.txt <<- EOF
 =======
 DOMAIN: $IDOMAIN
 PATH: /var/www/$DOMAIN
