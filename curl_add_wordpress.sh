@@ -54,6 +54,25 @@ define('FTP_HOST', '${DOMAIN['url']}');
 define('FTP_SSL', false);
 EOF
 
+cat > .htaccess <<- EOF
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+EOF
+
+# Set Permissions - https://codex.wordpress.org/Changing_File_Permissions
+find . -type d -exec chmod 750 {} \;
+find . -type f -exec chmod 640 {} \;
+chmod 400 wp-config.php
+chmod 666 .htaccess
+
 # Source Control
 git init
 git add -A .
