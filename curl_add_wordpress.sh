@@ -72,7 +72,7 @@ find . -type d -exec chmod 750 {} \;
 find . -type f -exec chmod 640 {} \;
 chmod 400 wp-config.php
 chmod 666 .htaccess
-chown -R ${DOMAIN['name']}:www-data /var/www/${DOMAIN['http_path']}
+chown -R ${DOMAIN['name']}:www-data ${DOMAIN['http_path']}
 
 # Source Control
 git init
