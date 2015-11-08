@@ -30,7 +30,7 @@ if [ -z "$DOMAIN" ] || [ -z "$PASSWORD" ]; then
 fi
 
 # Protect from MySQL username length error.
-MYSQL_USER="${$DOMAIN:0:15}"
+MYSQL_USER="${DOMAIN:0:15}"
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
