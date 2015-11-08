@@ -24,8 +24,6 @@ fi
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 PASSWORD=$2
 
-
-
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
 
