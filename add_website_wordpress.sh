@@ -41,6 +41,8 @@ done
 
 # FTP
 cat >> ./wp-config.php <<- EOF
+
+/** FTP Settings */
 define('FS_METHOD', 'ftpext');
 define('FTP_BASE', '${DOMAIN['http_path']}');
 define('FTP_USER', '${DOMAIN['ftp_user']}');
