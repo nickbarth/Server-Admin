@@ -47,8 +47,8 @@ mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --
 
 cat < EOF > /etc/apache2/sites-available/$DOMAIN.conf
 <VirtualHost *:80>
-  ServerName $RAWDOMAIN
-  # ServerAlias *.$RAWDOMAIN
+  ServerName ${RAWDOMAIN}
+  # ServerAlias *.${RAWDOMAIN}
   DocumentRoot /var/www/$DOMAIN
 
   CustomLog /var/log/apache2/$DOMAIN_access.log combined
