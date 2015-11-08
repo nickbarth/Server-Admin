@@ -25,7 +25,7 @@ else
 fi
 
 if [ -z "$DOMAIN" ] || [ -z "$PASSWORD" ]; then
-  echo "Domain and password required.\n # USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/add_website_from_curl.sh) example.com passwd" 1>&2
+  echo "Domain and password required." 1>&2
   exit 3
 fi
 
