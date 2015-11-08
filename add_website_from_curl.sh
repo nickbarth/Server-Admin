@@ -19,7 +19,7 @@ if [ ! -f ~/config.sh ]; then
 else
   source ~/config.sh
   
-  RAWDOMAIN=$1
+  IDOMAIN=$1
   DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
   PASSWORD=$2
 fi
@@ -47,8 +47,8 @@ mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --
 
 cat < EOF > /etc/apache2/sites-available/$DOMAIN.conf
 <VirtualHost *:80>
-  ServerName ${RAWDOMAIN}
-  # ServerAlias *.${RAWDOMAIN}
+  ServerName $IDOMAIN
+  # ServerAlias *.$IDOMAIN
   DocumentRoot /var/www/$DOMAIN
 
   CustomLog /var/log/apache2/$DOMAIN_access.log combined
@@ -73,7 +73,7 @@ service apache2 reload
 
 tee << EOF >> ~/websites.txt
 =======
-DOMAIN: $RAWDOMAIN
+DOMAIN: $IDOMAIN
 PATH: /var/www/$DOMAIN
 DATABASE:
   - DB: $DOMAIN
