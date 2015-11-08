@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ####
-# Configure database connection settings.
+# Configure connection settings for other scripts.
 #
-# USAGE: source ./config_database.sh
+# USAGE: source ./config.sh
 #
 # EXPORTS: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
 # eg. main.example.us-east-1.rds.amazonaws.com, root, passwd
