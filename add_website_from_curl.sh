@@ -69,7 +69,6 @@ cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 EOF
 
 mkdir ~/domains/ && tee ~/domains/$DOMAIN.conf <<- EOF
-=======
 DOMAIN: $IDOMAIN
 HTTP:
   - PATH: /var/www/$DOMAIN
