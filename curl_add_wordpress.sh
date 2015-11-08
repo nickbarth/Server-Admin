@@ -22,8 +22,8 @@ else
 fi
 
 # Download Files
-mkdir -p /var/www/$DOMAIN && cd /var/www/$DOMAIN
-curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory /var/www/$DOMAIN --strip-components=1 wordpress
+mkdir -p /var/www/${DOMAIN['name']} && cd /var/www/${DOMAIN['name']}
+curl -s https://wordpress.org/latest.tar.gz | tar -zxf - --directory /var/www/${DOMAIN['name']} --strip-components=1 wordpress
 
 # Configure Wordpress
 mv wp-config-sample.php wp-config.php
