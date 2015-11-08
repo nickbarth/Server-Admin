@@ -77,6 +77,6 @@ chown -R ${DOMAIN['name']}:www-data ${DOMAIN['http_path']}
 # Source Control
 git init
 git add -A .
-gc -m "$(date +%Y-%m-%d)"
+git commit -m "$(date +%Y-%m-%d)"
 
 echo "Wordpress installed to ${DOMAIN['http_path']}."
