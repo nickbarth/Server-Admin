@@ -51,8 +51,8 @@ cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
   # ServerAlias *.$IDOMAIN
   DocumentRoot /var/www/$DOMAIN
 
-  CustomLog /var/log/apache2/$DOMAIN_access.log combined
-  ErrorLog /var/log/apache2/$DOMAIN_error.log
+  CustomLog /var/log/apache2/${DOMAIN}_access.log combined
+  ErrorLog /var/log/apache2/${DOMAIN}_error.log
 
   <Directory />
     Options FollowSymLinks
@@ -77,8 +77,8 @@ HTTP:
   - PATH: /var/www/$DOMAIN
   - CONFIG: /etc/apache2/sites-available/$DOMAIN.conf
 LOGS:
-  - ACCESS: /var/log/apache2/$DOMAIN_access.log
-  - ERROR: /var/log/apache2/$DOMAIN_error.log
+  - ACCESS: /var/log/apache2/${DOMAIN}_access.log
+  - ERROR: /var/log/apache2/${DOMAIN}_error.log
 DATABASE:
   - DB: $DOMAIN
   - HOST: $MYSQL_HOST
