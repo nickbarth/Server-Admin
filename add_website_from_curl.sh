@@ -71,7 +71,7 @@ EOF
 a2ensite $DOMAIN
 service apache2 reload
 
-mkdir -f ~/domains/ && tee ~/domains/$DOMAIN.conf <<- EOF
+mkdir -p ~/domains/ && tee ~/domains/$DOMAIN.conf <<- EOF
 DOMAIN: $IDOMAIN
 HTTP:
   - PATH: /var/www/$DOMAIN
