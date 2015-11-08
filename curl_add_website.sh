@@ -29,11 +29,8 @@ if [ -z "$DOMAIN" ] || [ -z "$PASSWORD" ]; then
   exit 3
 fi
 
-# Check length of domain to protect from MySQL username length error.
-if [ ${#DOMAIN} -ge 15 ]; then
-  echo "Domain user is longer than allowed for MySQL." 1>&2
-  exit 4
-fi
+# Protect from MySQL username length error.
+MYSQL_USER="${$DOMAIN:0:15}"
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
@@ -41,8 +38,8 @@ echo "$DOMAIN:$PASSWORD" | chpasswd
 service vsftpd restart
 
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE DATABASE $DOMAIN;"
-mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE USER '$DOMAIN'@'%' IDENTIFIED BY '$PASSWORD';"
-mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="GRANT ALL PRIVILEGES ON $DOMAIN.* TO '$DOMAIN'@'%';"
+mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$PASSWORD';"
+mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="GRANT ALL PRIVILEGES ON $DOMAIN.* TO '$MYSQL_USER'@'%';"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="FLUSH PRIVILEGES;"
 
 cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
@@ -81,7 +78,7 @@ DOMAIN['logs_access']="/var/log/apache2/${DOMAIN}_access.log"
 DOMAIN['logs_error']="/var/log/apache2/${DOMAIN}_error.log"
 DOMAIN['database_name']="$DOMAIN"
 DOMAIN['database_host']="$MYSQL_HOST"
-DOMAIN['database_user']="$DOMAIN"
+DOMAIN['database_user']="$MYSQL_USER"
 DOMAIN['database_password']="$PASSWORD"
 DOMAIN['ftp_user']="$DOMAIN"
 DOMAIN['ftp_password']="$PASSWORD"
