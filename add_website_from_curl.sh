@@ -11,40 +11,39 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-# Configure Script
+# Configure Script.
 # Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
 if [ ! -f ~/config.sh ]; then
-  echo "Configuration file not found."
+  echo "Configuration file not found." 1>&2
   exit 2
 else
   source ~/config.sh
+  
+  RAWDOMAIN=$1
+  DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
+  PASSWORD=$2
 fi
 
-# Domain lowercased and no periods eg. example_com
-DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
-PASSWORD=$2
+# Check length of domain to protect from MySQL username length error.
+if [ ${#DOMAIN} -ge 15 ]; then
+  echo "Domain user is longer than allowed for MySQL."
+  exit
+fi
 
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
 
 service vsftpd restart
 
-# Domain lowercased and no periods eg. example_com
-DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
-PASSWORD=$2
-
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE DATABASE $DOMAIN;"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE USER '$DOMAIN'@'%' IDENTIFIED BY '$PASSWORD';"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="GRANT ALL PRIVILEGES ON $DOMAIN.* TO '$DOMAIN'@'%';"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="FLUSH PRIVILEGES;"
 
-# Domain lowercased and no periods eg. example_com
-DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
-
 cat << EOF >> /etc/apache2/sites-available/$DOMAIN.conf
 <VirtualHost *:80>
-  ServerName $DOMAIN
-  # ServerAlias *.$DOMAIN
+  ServerName $RAWDOMAIN
+  # ServerAlias *.$RAWDOMAIN
   DocumentRoot /var/www/$DOMAIN
 
   CustomLog /var/log/apache/$DOMAIN_access.log combined
@@ -66,3 +65,17 @@ EOF
 
 a2ensite $DOMAIN
 service apache2 reload
+
+cat << EOF >> ~/websites.txt
+=======
+DOMAIN: $RAWDOMAIN
+PATH: /var/www/$DOMAIN
+DATABASE:
+  - DB: $DOMAIN
+  - HOST: $MYSQL_HOST
+  - USER: $DOMAIN
+  - PASS: $PASSWORD
+FTP:
+  - USER: $DOMAIN
+  - PASS: $PASSWORD
+EOF
