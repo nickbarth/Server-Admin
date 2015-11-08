@@ -12,11 +12,11 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Configure Script
+# Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
 if [ ! -f ~/config.sh ]; then
   echo "Configuration file not found."
   exit 2
 else
-  # Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
   source ~/config.sh
 fi
 
