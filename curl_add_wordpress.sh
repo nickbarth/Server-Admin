@@ -75,6 +75,9 @@ RewriteRule . /index.php [L]
 # END WordPress
 EOF
 
+# Uploads DIR
+mkdir -p wp-content/uploads
+
 # Set Permissions - https://codex.wordpress.org/Changing_File_Permissions
 find . -type d -exec chmod 750 {} \;
 find . -type f -exec chmod 640 {} \;
