@@ -54,6 +54,14 @@ define('FTP_HOST', '${DOMAIN['url']}');
 define('FTP_SSL', false);
 EOF
 
+# URL
+cat >> ./wp-config.php <<- EOF
+
+/** URL Settings */
+define('WP_HOME','http://${DOMAIN['url']}/');
+define('WP_SITEURL','http://${DOMAIN['url']}/');
+EOF
+
 cat > .htaccess <<- EOF
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
