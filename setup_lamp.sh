@@ -12,6 +12,10 @@ source setup_database.sh
 
 a2dissite 000-default.conf
 rm /etc/apache2/sites-available/000-default.conf
-sudo a2enmod rewrite
+
+a2enmod proxy
+a2enmod proxy_http
+a2enmod proxy_connect
+a2enmod rewrite
 
 service apache2 restart
