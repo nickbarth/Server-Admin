@@ -35,8 +35,6 @@ MYSQL_USER="${DOMAIN:0:15}"
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
 
-service vsftpd restart
-
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE DATABASE $DOMAIN;"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$PASSWORD';"
 mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="GRANT ALL PRIVILEGES ON $DOMAIN.* TO '$MYSQL_USER'@'%';"
@@ -67,6 +65,7 @@ EOF
 
 a2ensite $DOMAIN
 service apache2 reload
+service vsftpd restart
 
 mkdir -p ~/domains/ && tee ~/domains/$DOMAIN.sh <<- EOF
 declare -A DOMAIN=()
