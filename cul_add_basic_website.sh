@@ -3,7 +3,7 @@
 ####
 # Setup a website with a user, database, and apache config via curl piped to bash. 
 #
-# USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/curl_add_website.sh) example.com passwd
+# USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/cul_add_basic_website.sh) example.com passwd
 ##
 
 if [[ $EUID -ne 0 ]]; then
