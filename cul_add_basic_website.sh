@@ -29,16 +29,8 @@ if [ -z "$DOMAIN" ] || [ -z "$PASSWORD" ]; then
   exit 3
 fi
 
-# Protect from MySQL username length error.
-MYSQL_USER="${DOMAIN:0:15}"
-
 adduser --system --ingroup www-data --home /var/www/$DOMAIN $DOMAIN
 echo "$DOMAIN:$PASSWORD" | chpasswd
-
-mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE DATABASE $DOMAIN;"
-mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$PASSWORD';"
-mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="GRANT ALL PRIVILEGES ON $DOMAIN.* TO '$MYSQL_USER'@'%';"
-mysql --host="$MYSQL_HOST" --user="$MYSQL_ADMIN" --password="$MYSQL_PASSWORD" --execute="FLUSH PRIVILEGES;"
 
 cat > /etc/apache2/sites-available/$DOMAIN.conf <<- EOF
 <VirtualHost *:80>
