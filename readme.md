@@ -5,6 +5,8 @@ Linux Admin Scripts for Ubuntu Trusty 14.04 Amd64 Server 20150325 (ami-d05e75b8)
 ```bash
 # Documenation:
 
+add_sshkey.sh
+
 add_website_apache_config.sh
 ####
 # Add a virtual host into Apache for a given domain.
@@ -61,14 +63,37 @@ bak_website.sh
 # USAGE: ./bak_website.sh example.com
 ##
 
-config_database.sh
+config.sh
 ####
-# Configure database connection settings.
+# Configure connection settings for other scripts.
 #
-# USAGE: source ./config_database.sh
+# USAGE: source ./config.sh
 #
 # EXPORTS: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
 # eg. main.example.us-east-1.rds.amazonaws.com, root, passwd
+##
+
+curl_add_basic_website.sh
+####
+# Setup a website with a user, database, and apache config via curl piped to bash. 
+#
+# USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/cul_add_basic_website.sh) example.com passwd
+##
+
+curl_add_website.sh
+####
+# Setup a website with a user, database, and apache config via curl piped to bash. 
+#
+# USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/curl_add_website.sh) example.com passwd
+##
+
+curl_add_wordpress.sh
+####
+# Setup a Wordpress installation via curl piped to bash.
+#
+# USAGE: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/curl_add_wordpress.sh) example.com
+#
+# *REQUIRES: bash <(curl -s https://raw.githubusercontent.com/nickbarth/Server-Admin/master/curl_add_website.sh) example.com passwd
 ##
 
 readme.sh

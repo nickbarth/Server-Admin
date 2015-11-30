@@ -1,0 +1,2 @@
+DEFAULT:
+	bash readme.sh
