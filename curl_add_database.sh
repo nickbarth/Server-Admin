@@ -21,7 +21,7 @@ else
   
   DATABASE=$1
   USERNAME=$2
-  MYSQL_PASSWORD=$3
+  PASSWORD=$3
 fi
 
 if [ -z "$DATABASE" ] || [ -z "$USERNAME" ] || [ -z "$MYSQL_PASSWORD" ]; then
