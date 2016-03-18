@@ -22,7 +22,7 @@ apt-get -y update
 apt-get -y upgrade
 
 # install apache, php, and other dependencies
-apt-get install -y apache2 mysql-client php5 vsftpd php5-common php5-mysql php5-xmlrpc php5-cgi php5-curl php5-gd php5-cli php5-fpm php-apc php-pear php5-dev php5-imap php5-mcrypt libapache2-mod-php5 libxml2 ca-certificates git curl make
+apt-get install -y apache2 mysql-client php5 vsftpd ufw php5-common php5-mysql php5-xmlrpc php5-cgi php5-curl php5-gd php5-cli php5-fpm php-apc php-pear php5-dev php5-imap php5-mcrypt libapache2-mod-php5 libapache2-mod-security2 libapache2-mod-evasive libxml2 ca-certificates git curl make
 
 # install mysql and give password to installer
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_PASSWORD"
@@ -47,6 +47,8 @@ a2enmod proxy
 a2enmod proxy_http
 a2enmod proxy_connect
 a2enmod rewrite
+a2enmod security2
+a2enmod evasive
 
 service apache2 restart
 
