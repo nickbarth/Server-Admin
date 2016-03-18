@@ -43,6 +43,9 @@ a2dissite 000-default.conf
 rm /etc/apache2/sites-available/000-default.conf
 rm -rf /var/www/html/
 
+echo "ServerName localhost" >> /etc/apache2/conf-available/servername.conf
+sudo a2enconf servername
+
 a2enmod ssl
 a2enmod proxy
 a2enmod proxy_http
