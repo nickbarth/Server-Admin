@@ -38,6 +38,7 @@ debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multisel
 apt-get -y install phpmyadmin
 
 # setup apache
+echo "$(curl -s ip.appspot.com) $(hostname)" >> /etc/hosts
 a2dissite 000-default.conf
 rm /etc/apache2/sites-available/000-default.conf
 rm -rf /var/www/html/
