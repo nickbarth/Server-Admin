@@ -39,8 +39,8 @@ apt-get -y install phpmyadmin
 
 cat << EOF >> /etc/phpmyadmin/config-db.php
 <?php
-  $dbname='Default';
-  $dbserver='localhost';
+  \$dbname='Default';
+  \$dbserver='localhost';
 EOF
 
 # setup apache
