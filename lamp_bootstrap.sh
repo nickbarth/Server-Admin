@@ -37,7 +37,7 @@ debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $MYSQL
 debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
 apt-get -y install phpmyadmin
 
-cat > /etc/phpmyadmin/config-db.php <<- EOF
+cat << EOF >> /etc/phpmyadmin/config-db.php
 <?php
   $dbname='Default';
   $dbserver='localhost';
