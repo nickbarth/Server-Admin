@@ -37,6 +37,12 @@ debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $MYSQL
 debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
 apt-get -y install phpmyadmin
 
+cat > /etc/phpmyadmin/config-db.php <<- EOF
+<?php
+$dbname='Default';
+$dbserver='localhost';
+EOF
+
 # setup apache
 echo "$(curl -s ip.appspot.com) $(hostname)" >> /etc/hosts
 a2dissite 000-default.conf
