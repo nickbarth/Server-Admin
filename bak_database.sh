@@ -18,4 +18,5 @@ source ./database_config.sh
 # Domain lowercased and no periods eg. example_com
 DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
 
+# pg_dump -h $HOST -U $USER $DB > $DOMAIN-$(date +%Y-%m-%d).backup.sql
 mysqldump -u $MYSQL_ADMIN -p$MYSQL_PASSWD -h $MYSQL_HOST $DOMAIN > $DOMAIN-$(date +%Y-%m-%d).backup.sql
