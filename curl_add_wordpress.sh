@@ -13,14 +13,17 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
-
 # Configure Script.
-if [ ! -f ~/domains/$DOMAIN.sh ]; then
+# Import: MYSQL_HOST, MYSQL_ADMIN, MYSQL_PASSWORD
+if [ ! -f ~/config.sh ]; then
   echo "Configuration file not found." 1>&2
   exit 2
 else
-  source ~/domains/$DOMAIN.sh
+  source ~/config.sh
+  
+  IDOMAIN=$1
+  DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
+  PASSWORD=$2
 fi
 
 # Download Files
