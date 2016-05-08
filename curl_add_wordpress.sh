@@ -13,6 +13,8 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+DOMAIN=$(echo ${1,,} | sed 's/\./_/g')
+
 # Configure Script.
 if [ ! -f ~/domains/$DOMAIN.sh ]; then
   echo "Configuration file not found." 1>&2
