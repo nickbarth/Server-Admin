@@ -83,6 +83,11 @@ mkdir -p wp-content/uploads
 # Set Permissions - https://codex.wordpress.org/Changing_File_Permissions
 find . -type d -exec chmod 750 {} \;
 find . -type f -exec chmod 640 {} \;
+# Allow Wordpress to install updates and themes
+chmod 770 wp-content/plugins
+chmod 770 wp-content/themes
+chmod 770 wp-content/uploads
+# Secure Files
 chmod 440 wp-config.php
 chmod 666 .htaccess
 chown -R ${DOMAIN['name']}:www-data ${DOMAIN['http_path']}
